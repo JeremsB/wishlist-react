@@ -3,17 +3,19 @@ import { useForm } from "react-hook-form";
 import { Gift } from '@styled-icons/octicons/Gift';
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getGames} from "../store/actions/gamesAction";
+import {getOtherUsers, login} from "../../store/actions/userAction";
 
 
-function Login(props){
+function LoginForm(props){
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => console.log(data);
 
     const users = useSelector(state => state.users);
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(Login());
+        localStorage.clear();
+        dispatch(login());
+        dispatch(getOtherUsers());
     }, [dispatch]);
 
     console.log(watch("example")); // watch input value by passing the name of it
@@ -43,4 +45,4 @@ function Login(props){
     )
 }
 
-export default Login
+export default LoginForm
