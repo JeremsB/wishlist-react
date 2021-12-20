@@ -6,11 +6,11 @@ const instance = axios.create({
     headers: {'Authorization': 'Bearer '+localStorage.getItem('token')}
 })
 
-export const login = () => async dispatch => {
+export const login = (id, pwd) => async dispatch => {
     const res = await instance.post(`/auth/login`,
         {
-            login: 'jerem',
-            password: 'jerem'
+            login: id,
+            password: pwd
         })
         .then((res) => {
             localStorage.setItem('token', res.data.token);

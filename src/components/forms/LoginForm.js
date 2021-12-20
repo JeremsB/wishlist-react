@@ -3,22 +3,26 @@ import { useForm } from "react-hook-form";
 import { Gift } from '@styled-icons/octicons/Gift';
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getOtherUsers, login} from "../../store/actions/userAction";
+import {login} from "../../store/actions/userAction";
 
 
 function LoginForm(props){
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
 
     const users = useSelector(state => state.users);
+
+    const onSubmit = data => {
+        dispatch(login(data.login, data.password))
+        if(users.user?.token){
+            console.log('ok');
+        }
+    }
+
     const dispatch = useDispatch();
     useEffect(() => {
         localStorage.clear();
-        dispatch(login());
-        dispatch(getOtherUsers());
-    }, [dispatch]);
+    }, []);
 
-    console.log(watch("example")); // watch input value by passing the name of it
     return(
         <div className="m-auto">
             <form onSubmit={handleSubmit(onSubmit)}
@@ -26,12 +30,12 @@ function LoginForm(props){
                 <div className="col-start-5 col-span-4 mb-3">
                     <Gift/>
                 </div>
-                {/* include validation with required or other standard HTML validation rules */}
                 <input
                     className="bg-primary-green rounded-lg col-start-3 col-span-8 py-2 px-4 text-white"
                     {...register("login", { required: true })} />
 
                 <input
+                    type="password"
                     className="bg-primary-green rounded-lg col-start-3 col-span-8 py-2 px-4 text-white"
                     {...register("password", { required: true })} />
                 {/* errors will return when field validation fails  */}
