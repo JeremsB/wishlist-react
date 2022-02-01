@@ -4,18 +4,15 @@ import { Gift } from '@styled-icons/octicons/Gift';
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {login} from "../../store/actions/userAction";
-
+import {Navigate} from 'react-router-dom';
 
 function LoginForm(props){
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-    const users = useSelector(state => state.users);
+    //const users = useSelector(state => state.users);
 
-    const onSubmit = data => {
-        dispatch(login(data.login, data.password))
-        if(users.user?.token){
-            console.log('ok');
-        }
+    const onSubmit = async data => {
+        await dispatch(login(data.login, data.password))
     }
 
     const dispatch = useDispatch();
@@ -45,6 +42,7 @@ function LoginForm(props){
                     type="submit"
                     value="Connexion"/>
             </form>
+            {localStorage.getItem('token') !== null ? <Navigate to="/presents" /> : ''}
         </div>
     )
 }
