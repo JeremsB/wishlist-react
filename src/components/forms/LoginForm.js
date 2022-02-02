@@ -9,8 +9,6 @@ import {Navigate} from 'react-router-dom';
 function LoginForm(props){
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-    //const users = useSelector(state => state.users);
-
     const onSubmit = async data => {
         await dispatch(login(data.login, data.password))
     }

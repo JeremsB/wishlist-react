@@ -8,6 +8,8 @@ module.exports = {
       'black': '#000000',
       'primary-yellow': '#EDCC8B',
       'primary-green': '#6D8C8E',
+      'secondary-green': '#465A5B',
+      'present-hover': '#C0C5BB',
       gray: {
         '50':  '#fafafa',
         '100': '#f4f4f5',

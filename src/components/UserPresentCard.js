@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 function UserPresentCard(props){
 
     return(
-        <div className="bg-primary-green mb-2 rounded-lg p-2 text-saffron-50">
+        <div className="bg-primary-green mb-3 rounded-lg p-2 text-saffron-50">
             <div className="text-center border-b-2 border-saffron-50">
                 <strong>{props.name}</strong>
             </div>

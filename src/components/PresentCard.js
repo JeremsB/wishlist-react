@@ -5,10 +5,8 @@ import UserPresentCard from "./UserPresentCard";
 
 function PresentCard(props){
 
-    let test = 1
-
     return(
-        <div className="bg-saffron-50/75 rounded-lg mt-2 p-2 text-black grid grid-cols-10 gap-1">
+        <div className="bg-saffron-50/75 rounded-lg mt-2 p-2 text-black grid grid-cols-10 gap-1 hover:bg-present-hover">
             <div className="col-span-8">
                 <strong className="align-sub">{props.label}</strong>
             </div>
